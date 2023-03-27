@@ -1,0 +1,47 @@
+.item1 { grid-area: headerLeft; }
+.item2 { grid-area: headerCenter; }
+.item3 { grid-area: headerRIGHT; }
+.item4 { grid-area: main; }
+.item5 { grid-area: left; }
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+    'headerLeft headerLeft headerCenter headerCenter headerRIGHT headerRIGHT'
+    'left left main main main main ';
+    gap: 10px;
+    padding: 10px;
+}
+
+.grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px 0;
+}
+.item1{
+    margin-top: 5%;
+    margin-left: 100px;
+    font-size: 30px;
+}
+.item2{
+    margin-top: 5%;
+    font-size: 20px;
+}
+    .item3{
+    margin-top: 5%;
+    margin-right: 100px;
+    font-size: 20px;
+}
+.item4{
+    margin-right: 100px;
+}
+.item5{
+    margin-left: 100px;
+}
+
+.labelMarginLeft{
+    margin-left: 10%;
+}
+.labelMarginRight{
+    margin-right: 10%;
+    float: right;
+}

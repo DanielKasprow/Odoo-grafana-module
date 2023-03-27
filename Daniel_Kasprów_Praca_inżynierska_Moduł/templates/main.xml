@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <template id="grafana_statistics">
+        <!-- Umożliwia generowanie nagłówka i stopki Odoo -->
+        <t t-call="website.layout">
+            <t t-set="additional_title">statistics</t>
+            <head>
+                <xpath expr="." position="inside">
+                    <script src="/grafana/static/src/js/website_manager_with_statistics.js"/>
+                </xpath>
+            </head>
+            <body>
+                <div class="grid-container" margin="50px 10px 20px 30px">
+
+                    <!-- nagłówek -->
+                    <div class="item1" align="center">
+                        <label>Listening statistics</label>
+                    </div>
+                    <div class="item2" align="right">
+                        <label id="allConnections">All Connections:</label>
+                    </div>
+                    <div class="item3" align="Center">
+                        <label id="uniqueID">Unique Connections:</label>
+                    </div>
+                    <div class="item4" align="center">
+                        <iframe id="chart" style="height:500px; width:100%; border: 0px;"/>
+                    </div>
+
+                    <!-- Panele związane z konfigurowaniem wyświetlanych statystyk -->
+                    <div class="item5">
+                        <div>
+                            <!-- Panel związany z wyborem zakresu czasu wyświetlanych statystyk -->
+                            <fieldset id="fieldTimeSpan"
+                                      style="border: 1px solid black; border-radius: 5px; width: 63%; height: 200px; float: left;">
+                                <legend style="text-align: center;">Time Span</legend>
+                                <div>
+                                    <input class="labelMarginLeft" type="radio" id="timeSpanLastWeek" name="timeSpan"
+                                           value="Last Week"
+                                           checked="true"/>
+                                    <label for="timeSpanLastWeek">Last Week</label>
+                                </div>
+                                <div>
+                                    <input class="labelMarginLeft" type="radio" id="timeSpanLastMonth" name="timeSpan"
+                                           value="Last Month"/>
+                                    <label for="timeSpanLastMonth">Last Month</label>
+                                </div>
+                                <div>
+                                    <input class="labelMarginLeft" type="radio" id="timeSpanChoose" name="timeSpan"
+                                           value="Choose- From: "/>
+                                    <label for="timeSpanChoose">Choose- </label>
+
+                                    <input type="date" id="chooseDateFrom" for="timeSpanChoose" class="labelMarginRight" style="width: 40%;" />
+                                    <label for="timeSpanChoose" style="float:right"> From: </label>
+
+
+                                </div>
+                                <div>
+                                    <input type="date" id="chooseDateTo" for="timeSpanChoose" class="labelMarginRight" style="width: 40%;"/>
+                                    <label for="timeSpanChoose" style="float:right">To: </label>
+
+
+                                </div>
+                            </fieldset>
+
+                            <!-- Panel związany z wyborem typu raportu -->
+                            <fieldset id="fieldTypeOfReport"
+                                      style="border: 1px solid black; border-radius: 5px; width: 35%; height: 200px; float: left; margin-left: 2%;">
+                                <legend style="text-align: center;">Type of Report</legend>
+                                <div>
+                                    <Input class="labelMarginLeft" type="radio" id="typeOfReportHourly"
+                                           name="typeOfReport" value="Hourly"/>
+                                    <label for="typeOfReportHourly">Hourly</label>
+                                </div>
+                                <div>
+                                    <Input class="labelMarginLeft" type="radio" id="typeOfReportDaily"
+                                           name="typeOfReport" value="Daily"
+                                           checked="true"/>
+                                    <label for="typeOfReportDaily">Daily</label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <!-- Panel związany z wyborem serwera, Radio program oraz channel-->
+                        <fieldset id="fieldSelectDataToAnalyze"
+                                  style="border: 1px solid black; border-radius: 5px; width: 100%; height: 300px;">
+                            <legend style="text-align: center;">Select data to analyze</legend>
+                            <div>
+                                <label class="labelMarginLeft" style="margin-right:33px;">Radio program:</label>
+                                <select id="selectDataToAnalyzeSelectProgramSelector" class="labelMarginRight"
+                                        style="height:10%; width: 50%;  text-align: center; font-weight: bold;"/>
+                            </div>
+
+                            <div>
+                                <Input class="labelMarginLeft" type="radio" id="selectDataToAnalyzeSelectChannel"
+                                       name="selectDataToAnalyze" value="selectChannel" checked="true"/>
+                                <label for="selectDataToAnalyzeSelectChannel">Select channel:</label>
+                                <select id="selectDataToAnalyzeSelectChannelSelector" class="labelMarginRight"
+                                        for="selectDataToAnalyzeSelectChannel"
+                                        style="height:10%; width: 50%;  text-align: center; font-weight: bold;"/>
+                            </div>
+                            <div>
+                                <Input class="labelMarginLeft" type="radio" id="selectDataToAnalyzeSelectServer"
+                                       name="selectDataToAnalyze" value="selectChannel" checked="true"/>
+                                <label for="selectDataToAnalyzeSelectServer" style="margin-right:9px;">Select server:  </label>
+                                <select id="selectDataToAnalyzeSelectServerSelector" class="labelMarginRight"
+                                        for="selectDataToAnalyzeSelectServer"
+                                        style="height:10%; width: 50%;  text-align: center; font-weight: bold;"/>
+                            </div>
+
+                            <div>
+                                <Input class="labelMarginLeft" type="radio"
+                                       id="selectDataToAnalyzeTheWholeStreamingGroup" name="selectDataToAnalyze"
+                                       value="theWholeStreamingGroup"/>
+                                <label for="selectDataToAnalyzeTheWholeStreamingGroup">The whole streaming group:
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </body>
+        </t>
+    </template>
+</odoo>
